@@ -1,0 +1,268 @@
+<!--
+               _                    ___ _      ___
+         /\   | |         /\       |  _| |    |_  |
+        /  \  | | __ _   /  \   ___| | | |_ ___ | |
+       / /\ \ | |/ _` | / /\ \ / __| | | __/ __|| |
+      / ____ \| | (_| |/ ____ \ (__| | | || (__ | |
+     /_/    \_\_|\__, /_/    \_\___| |_ \__\___|| |
+                  __/ |            |___|      |___|
+                 |___/
+
+           (c) 2012 - Mois�s Cachay Tello
+   Este c�digo se entrega s�lo con fines de estudio.
+-->
+
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>VentanaPrincipal</class>
+ <widget class="QMainWindow" name="VentanaPrincipal">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>800</width>
+    <height>600</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>800</width>
+    <height>600</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string notr="true">AlgAc[tc]</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../resources.qrc">
+    <normaloff>:/ico/GIF.png</normaloff>:/ico/GIF.png</iconset>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <widget class="QTabWidget" name="tabWidget">
+      <property name="currentIndex">
+       <number>-1</number>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuAyuda">
+    <property name="title">
+     <string>Ayuda</string>
+    </property>
+    <addaction name="actionAcerca_de"/>
+    <addaction name="actionAcerca_de_Qt"/>
+    <addaction name="separator"/>
+   </widget>
+   <addaction name="menuAyuda"/>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+     <horstretch>1</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-color:none;</string>
+   </property>
+   <property name="movable">
+    <bool>false</bool>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionAnadirGramatica"/>
+   <addaction name="actionAbrirGramatica"/>
+   <addaction name="actionGuardarGramatica"/>
+   <addaction name="actionAplicarAlgoritmo"/>
+   <addaction name="actionCerrarGramatica"/>
+  </widget>
+  <widget class="QToolBar" name="exitToolBar">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="layoutDirection">
+    <enum>Qt::RightToLeft</enum>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-color: none;</string>
+   </property>
+   <property name="movable">
+    <bool>false</bool>
+   </property>
+   <property name="allowedAreas">
+    <set>Qt::RightToolBarArea|Qt::TopToolBarArea</set>
+   </property>
+   <property name="floatable">
+    <bool>false</bool>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionSalir"/>
+  </widget>
+  <widget class="QStatusBar" name="statusBar">
+   <property name="statusTip">
+    <string/>
+   </property>
+   <property name="sizeGripEnabled">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <action name="actionAnadirGramatica">
+   <property name="icon">
+    <iconset resource="../resources.qrc">
+     <normaloff>:/ico/Default.png</normaloff>:/ico/Default.png</iconset>
+   </property>
+   <property name="text">
+    <string>Añadir Gramática</string>
+   </property>
+   <property name="toolTip">
+    <string>Añadir Gramática</string>
+   </property>
+   <property name="statusTip">
+    <string>Añade una Gramática nueva.</string>
+   </property>
+  </action>
+  <action name="actionAbrirGramatica">
+   <property name="icon">
+    <iconset>
+     <normalon>:/ico/Opened.png</normalon>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>Abrir Gramática</string>
+   </property>
+   <property name="toolTip">
+    <string>Abrir Gramática</string>
+   </property>
+   <property name="statusTip">
+    <string>Abre una definición de Gramática desde un archivo.</string>
+   </property>
+  </action>
+  <action name="actionGuardarGramatica">
+   <property name="icon">
+    <iconset>
+     <normalon>:/ico/Floppy.png</normalon>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>Guardar Gramática</string>
+   </property>
+   <property name="toolTip">
+    <string>Guardar Gramática</string>
+   </property>
+   <property name="statusTip">
+    <string>Guarda la definición actual en el disco.</string>
+   </property>
+  </action>
+  <action name="actionAcerca_de">
+   <property name="text">
+    <string>Acerca de...</string>
+   </property>
+   <property name="statusTip">
+    <string>Acerca de AlgAc[tc]...</string>
+   </property>
+  </action>
+  <action name="actionAplicarAlgoritmo">
+   <property name="icon">
+    <iconset>
+     <normalon>:/ico/Undock.png</normalon>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>Aplicar Algoritmo</string>
+   </property>
+   <property name="toolTip">
+    <string>Aplicar Algoritmo</string>
+   </property>
+   <property name="statusTip">
+    <string>Aplica el Algoritmo Activo o Accesible.</string>
+   </property>
+  </action>
+  <action name="actionCerrarGramatica">
+   <property name="icon">
+    <iconset>
+     <normalon>:/ico/Close.png</normalon>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>Cerrar Gramática</string>
+   </property>
+   <property name="toolTip">
+    <string>Cerrar Gramática</string>
+   </property>
+   <property name="statusTip">
+    <string>Cierra la Gramática abierta.</string>
+   </property>
+  </action>
+  <action name="actionSalir">
+   <property name="icon">
+    <iconset>
+     <normalon>:/ico/Shutdown.png</normalon>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>Salir</string>
+   </property>
+   <property name="toolTip">
+    <string>Salir</string>
+   </property>
+   <property name="statusTip">
+    <string>Salir de AlgAc[tc]</string>
+   </property>
+  </action>
+  <action name="actionAcerca_de_Qt">
+   <property name="text">
+    <string>Acerca de Qt</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources>
+  <include location="../resources.qrc"/>
+ </resources>
+ <connections/>
+</ui>

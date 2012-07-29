@@ -1,0 +1,191 @@
+<!--
+               _                    ___ _      ___
+         /\   | |         /\       |  _| |    |_  |
+        /  \  | | __ _   /  \   ___| | | |_ ___ | |
+       / /\ \ | |/ _` | / /\ \ / __| | | __/ __|| |
+      / ____ \| | (_| |/ ____ \ (__| | | || (__ | |
+     /_/    \_\_|\__, /_/    \_\___| |_ \__\___|| |
+                  __/ |            |___|      |___|
+                 |___/
+
+           (c) 2012 - Mois�s Cachay Tello
+   Este c�digo se entrega s�lo con fines de estudio.
+-->
+
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>TabGramatica</class>
+ <widget class="QWidget" name="TabGramatica">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>505</width>
+    <height>390</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="autoFillBackground">
+   <bool>true</bool>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: none;</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <property name="margin">
+    <number>0</number>
+   </property>
+   <item row="0" column="0">
+    <layout class="QVBoxLayout" name="layoutV" stretch="0">
+     <property name="sizeConstraint">
+      <enum>QLayout::SetDefaultConstraint</enum>
+     </property>
+     <item>
+      <widget class="QScrollArea" name="scrollArea">
+       <property name="styleSheet">
+        <string notr="true">color: none;</string>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::NoFrame</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Sunken</enum>
+       </property>
+       <property name="widgetResizable">
+        <bool>true</bool>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+       </property>
+       <widget class="QWidget" name="layoutContents">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>503</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="autoFillBackground">
+         <bool>true</bool>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_2" rowstretch="0" columnstretch="0" rowminimumheight="0">
+         <property name="sizeConstraint">
+          <enum>QLayout::SetDefaultConstraint</enum>
+         </property>
+         <property name="margin">
+          <number>0</number>
+         </property>
+         <property name="spacing">
+          <number>0</number>
+         </property>
+         <item row="0" column="0">
+          <layout class="QVBoxLayout" name="layoutProducciones">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <property name="sizeConstraint">
+            <enum>QLayout::SetFixedSize</enum>
+           </property>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="1" column="0">
+    <layout class="QHBoxLayout" name="layoutBotones" stretch="1,0,1">
+     <property name="spacing">
+      <number>10</number>
+     </property>
+     <property name="sizeConstraint">
+      <enum>QLayout::SetMinimumSize</enum>
+     </property>
+     <property name="topMargin">
+      <number>0</number>
+     </property>
+     <property name="bottomMargin">
+      <number>0</number>
+     </property>
+     <item>
+      <widget class="QPushButton" name="btnAlgActivo">
+       <property name="statusTip">
+        <string>Aplicar el Algoritmo Activo a esta Gramática</string>
+       </property>
+       <property name="text">
+        <string>Algoritmo Activo</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btnAnadirProduccion">
+       <property name="statusTip">
+        <string>Añade una nueva Producción a esta Gramática.</string>
+       </property>
+       <property name="text">
+        <string>Añadir Producción</string>
+       </property>
+       <property name="icon">
+        <iconset resource="../resources.qrc">
+         <normaloff>:/ico/GIF.png</normaloff>:/ico/GIF.png</iconset>
+       </property>
+       <property name="flat">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btnAlgAccesible">
+       <property name="statusTip">
+        <string>Aplicar el Algoritmo Activo a esta Gramática</string>
+       </property>
+       <property name="text">
+        <string>Algoritmo Accesible</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources>
+  <include location="../resources.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>btnAnadirProduccion</sender>
+   <signal>clicked()</signal>
+   <receiver>TabGramatica</receiver>
+   <slot>agregarProduccion()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>248</x>
+     <y>22</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>274</x>
+     <y>38</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>agregarProduccion()</slot>
+ </slots>
+</ui>

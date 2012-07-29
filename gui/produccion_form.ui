@@ -1,0 +1,124 @@
+<!--
+               _                    ___ _      ___
+         /\   | |         /\       |  _| |    |_  |
+        /  \  | | __ _   /  \   ___| | | |_ ___ | |
+       / /\ \ | |/ _` | / /\ \ / __| | | __/ __|| |
+      / ____ \| | (_| |/ ____ \ (__| | | || (__ | |
+     /_/    \_\_|\__, /_/    \_\___| |_ \__\___|| |
+                  __/ |            |___|      |___|
+                 |___/
+
+           (c) 2012 - MoisÈs Cachay Tello
+   Este cÛdigo se entrega sÛlo con fines de estudio.
+-->
+
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ProduccionForm</class>
+ <widget class="QWidget" name="ProduccionForm">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>500</width>
+    <height>26</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <property name="margin">
+    <number>0</number>
+   </property>
+   <property name="spacing">
+    <number>0</number>
+   </property>
+   <item row="0" column="0">
+    <layout class="QHBoxLayout" name="layoutProd" stretch="6,1,0,200,0">
+     <property name="spacing">
+      <number>0</number>
+     </property>
+     <property name="sizeConstraint">
+      <enum>QLayout::SetMaximumSize</enum>
+     </property>
+     <property name="leftMargin">
+      <number>0</number>
+     </property>
+     <item>
+      <widget class="QLabel" name="lblNumero">
+       <property name="styleSheet">
+        <string notr="true">font: 75 9pt &quot;MS Shell Dlg 2&quot;;</string>
+       </property>
+       <property name="text">
+        <string>0.</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+       <property name="margin">
+        <number>5</number>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="txtIzquierda">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+         <horstretch>25</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>25</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="layoutDirection">
+        <enum>Qt::RightToLeft</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="lblFlecha">
+       <property name="text">
+        <string>--&gt;</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="txtDerecha"/>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btnCerrar">
+       <property name="statusTip">
+        <string>Cerrar esta Producci√≥n.</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset resource="../resources.qrc">
+         <normaloff>:/ico/Close.png</normaloff>:/ico/Close.png</iconset>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources>
+  <include location="../resources.qrc"/>
+ </resources>
+ <connections/>
+ <slots>
+  <slot>cerrarProduccion()</slot>
+ </slots>
+</ui>

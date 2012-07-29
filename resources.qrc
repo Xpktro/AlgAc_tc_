@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/">
+        <file>ico/Default.png</file>
+        <file>ico/Floppy.png</file>
+        <file>ico/Opened.png</file>
+        <file>ico/Shutdown.png</file>
+        <file>ico/Undock.png</file>
+        <file>ico/Close.png</file>
+        <file>ico/GIF.png</file>
+    </qresource>
+</RCC>
