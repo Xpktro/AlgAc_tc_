@@ -105,33 +105,42 @@ Gramatica UtilidadesGramatica::algoritmoActivo(Gramatica entrada, std::vector<Ut
     //del algoritmo:
     UtilidadesSimbolo::SetSimbolos* wx = new UtilidadesSimbolo::SetSimbolos();
 
-    //Se empieza teniendo un W0 que contiene todos los no terminales de
-    //la gramática a procesar.
-    wx->agregar(entrada.getTerminales());
-    w.push_back(*wx);
-
     //Se sabe que también el algoritmo no debe de hacer más iteraciones
     //que el número de terminales que tiene la gramática.
     int nt = (int)entrada.getNoTerminales().size();
 
+    //Se empieza teniendo un W0 que contiene todos los no terminales de
+    //los lados izquierdos de las gramáticas cuando sus lados derechos
+    //contienen sólo terminales.
     std::vector<Produccion>::size_type tProduccion = entrada.getProducciones().size();
+    UtilidadesSimbolo::SetSimbolos* w0 = new UtilidadesSimbolo::SetSimbolos();
+
+    for(unsigned int i = 0; i < tProduccion; i++) {
+        if(QRegExp("[a-z]+").exactMatch(QString::fromStdString(entrada.getProduccion(i).getDerecha().listaStr()))) {
+            w0->agregarElemento(entrada.getProduccion(i).getIzquierda());
+        }
+    }
+    w.push_back(*w0);
 
     //Empezamos la serie de iteraciones principal:
     do {
         //Reiniciamos nuestro W temporal y le damos los valores
         //del último W insertado a w:
         wx = new UtilidadesSimbolo::SetSimbolos();
-        wx->agregar(*(w.begin()));
+        wx->agregar(*(--w.end()));
 
+        //Recogemos un w temporal con los últimos datos insertados para evitar resultados
+        //apresurados al momento de la evaluación de las expresiones regulares.
+        UtilidadesSimbolo::SetSimbolos wTemp = UtilidadesSimbolo::SetSimbolos();
+        wTemp.agregar(*wx);
         //Para cada una de las producciones de la gramática de entrada:
         for(unsigned int i = 0; i < tProduccion; i++) {
             //Verificamos si el lado derecho contiene sólamente uno o todos los
             //símbolos de Wx. Para esto comparamos el lado derecho de la producción
-            //con la expresión regular "^[(simbolos)]+$" que sólo coincidirá con
+            //con la expresión regular "^[(simbolos)a-z]+$" que sólo coincidirá con
             //la condición anteriormente mencionada.
-            if(QString::fromStdString(entrada.getProduccion(i).getDerecha().listaStr()).contains(
-                    QRegExp(QString::fromStdString("^[")+QString::fromStdString(wx->setStr())+QString::fromStdString("]+$"))
-            )) {
+            QRegExp regexp = QRegExp(QString("[")+QString::fromStdString(wTemp.setStr())+QString("a-z]+"));
+            if(regexp.exactMatch(QString::fromStdString(entrada.getProduccion(i).getDerecha().listaStr()))) {
                 //En cuyo caso agregamos el símbolo de la izquierda
                 //a W y añadimos la producción en cuestión a nuestra
                 //gramática resultante:
@@ -180,17 +189,20 @@ Gramatica UtilidadesGramatica::algoritmoAccesible(Gramatica entrada, std::vector
         //Reiniciamos nuestro W temporal y le damos los valores
         //del último W insertado a w:
         wx = new UtilidadesSimbolo::SetSimbolos();
-        wx->agregar(*(w.begin()));
+        wx->agregar(*(w.rbegin()));
 
+        //Recogemos un w temporal con los últimos datos insertados para evitar resultados
+        //apresurados al momento de la evaluación de las expresiones regulares.
+        UtilidadesSimbolo::SetSimbolos wTemp = UtilidadesSimbolo::SetSimbolos();
+        wTemp.agregar(*wx);
         //Para cada una de las producciones de la gramática de entrada:
         for(unsigned int i = 0; i < tProduccion; i++) {
             //Verifivamos si el lado izquierdo contiene los símbolos terminales
             //de Wx. Para esto comparamos el lado izquierdo de la producción
             //con la expresión regular "[(simbolos)]" que sólo coincidirá con
             //la condición anteriormente mencionada.
-            if(QString::fromStdString(entrada.getProduccion(i).getIzquierda().getSimbolo()).contains(
-                    QRegExp(QString::fromStdString("[")+QString::fromStdString(wx->setStr())+QString::fromStdString("]"))
-            )) {
+            QRegExp regexp = QRegExp(QString("[")+QString::fromStdString(wTemp.setStr())+QString("]"));
+            if(regexp.exactMatch(QString::fromStdString(entrada.getProduccion(i).getIzquierda().getSimbolo()))) {
                 //En cuyo caso agregamos la parte derecha de la producción
                 //a W y añadimos la producción en cuestión a nuestra
                 //gramática resultante:
